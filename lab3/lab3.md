@@ -11,3 +11,10 @@
     Services, including load balancing and discovery.
   - **Internet-to-Service Networking**: how external traffic
     reaches cluster Services.
+
+# Practice
+
+# Questions
+
+1. Why can’t I just connect directly to my Pods?
+2. Why do I need a Service?

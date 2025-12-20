@@ -36,6 +36,8 @@ docker build -t <username>/service-a .
 docker build -t <username>/service-b .
 ```
 
+_Note_: If using k3s, try to do it.
+
 ### Apply k8s configure yaml
 
 ```

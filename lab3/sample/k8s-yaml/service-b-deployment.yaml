@@ -10,14 +10,14 @@ spec:
   template:
     metadata:
       labels:
-        app: service-d
+        app: service-b
     spec:
       containers:
         - name: service-b
-          image: ngdg11/service-b:latest
+          image: <username>/service-b:latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 3001
+            - containerPort: 3002
 ---
 apiVersion: v1
 kind: Service
