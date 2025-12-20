@@ -14,6 +14,8 @@
 
 # Practice
 
+Follow the README in the sample folder to execute the YAML files and resolve any existing issues in them.
+
 # Questions
 
 1. Why can’t I just connect directly to my Pods?

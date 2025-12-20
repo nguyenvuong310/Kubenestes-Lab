@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: v1
 kind: Deployment
 metadata:
   name: service-b
@@ -6,7 +6,7 @@ spec:
   replicas: 5
   selector:
     matchLabels:
-      app: service-b
+      app: service-d
   template:
     metadata:
       labels:
@@ -17,16 +17,16 @@ spec:
           image: <username>/service-b:latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 3002
+            - containerPort: 3001
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: service-b
 spec:
-  type: ClusterIP
+  type:
   selector:
     app: service-b
   ports:
-    - port: 3002
+    - port: 3001
       targetPort: 3002
