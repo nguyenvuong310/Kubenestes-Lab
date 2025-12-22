@@ -2,7 +2,7 @@
 
 ## Images
 
-- **Frontend, Backend**: built in previous labs
+- **Frontend, Backend**: built in nexus labs
 - **Database**: self-selected.
 
 ## TODO
