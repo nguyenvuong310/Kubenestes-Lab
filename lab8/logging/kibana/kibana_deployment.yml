@@ -6,7 +6,7 @@ metadata:
   labels:
     app: kibana
 spec:
-  replicas: $NUMBER_PODS
+  replicas: 1
   selector:
     matchLabels:
       app: kibana
@@ -19,11 +19,14 @@ spec:
         - name: kibana
           image: docker.elastic.co/kibana/kibana:7.13.4
           resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
             limits:
-              memory: "128Mi"
+              memory: "512Mi"
               cpu: "500m"
           env:
-            - name: ELASTICSEARCH_URL
-              value: http://elasticsearch:9200
+            - name: ELASTICSEARCH_HOSTS
+              value: '["http://elasticsearch:9200"]'
           ports:
             - containerPort: 5601

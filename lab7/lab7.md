@@ -1,14 +1,23 @@
-# ArgoCD
+# ArgoCD Lab
 
-Use the official manifest file to deploy ArgoCD to a Kubernetes cluster:
-[ArgoCD Install Manifest](https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml)
+## Deploy ArgoCD
 
 ```
+# Create the argocd namespace first
+kubectl create namespace argocd
+
+# Deploy ArgoCD using the official manifest
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
-To Convert the ArgoCD service from ClusterIP to NodePort to allow external browser access.
+## Check ArgoCD pods
 
 ```
-kubectl patch svc argocd-server -n default -p '{"spec":{"type":"NodePort"}}'
+kubectl get pods -n argocd
+```
+
+## Expose ArgoCD to external browser
+
+```
+kubectl patch svc argocd-server -n argocd -p '{"spec":{"type":"NodePort"}}'
 ```
