@@ -147,7 +147,3 @@ Note that `kubectl delete -f logging_namespace.yml` will fail to remove resource
 
 - Consider replacing Elasticsearch with a managed backend or using OpenSearch.
 - Add Index lifecycle management and storage sizing guidance for production.
-
----
-
-Lab created: use the manifests inside `lab8/logging` to follow the steps above.

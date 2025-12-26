@@ -152,7 +152,3 @@ Because the PV uses `persistentVolumeReclaimPolicy: Retain`, the hostPath data a
 - Convert the Deployment to a StatefulSet if you need stable network identity (not necessary for typical Jenkins Master).
 - Use an Ingress / LoadBalancer instead of NodePort for production-like access.
 - Integrate with GitHub Actions or GitHub Apps for tighter GitHub-Jenkins integration.
-
----
-
-Follow the checklist above to complete the lab. If you want, I can also: (1) provide a corrected `jenkins_service.yml` file committed to the repo, or (2) add the `sum.js` implementation to `lab6/sample` — tell me which and I will apply the change.
