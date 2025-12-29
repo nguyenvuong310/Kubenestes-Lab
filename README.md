@@ -7,7 +7,7 @@ This repository contains a sequence of hands-on Kubernetes labs. Each lab folder
 1. Clone the repository and change into it:
 
 ```shell
-git clone [<repo-url>](https://github.com/nguyenvuong310/Kubenestes-Lab.git)
+git clone https://github.com/nguyenvuong310/Kubenestes-Lab.git
 cd Kubenestes-Lab
 ```
 
