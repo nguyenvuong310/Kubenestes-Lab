@@ -23,7 +23,9 @@ Files used (under `lab8/logging`):
 - A working Kubernetes cluster and `kubectl` configured to point at it.
 - Nodes must allow hostPath mounts (DaemonSet uses `/var/log`).
 
-## Deployment steps
+## Logging
+
+### Deployment steps
 
 1. Create the namespace and core resources.
 
@@ -42,7 +44,7 @@ Notes:
 - The Elasticsearch StatefulSet uses image `docker.elastic.co/elasticsearch/elasticsearch:7.13.4` and runs in single-node mode.
 - The Fluent Bit ConfigMap configures a `tail` input for `/var/log/containers/*.log` and an Elasticsearch output that points to the `elasticsearch` service. Environment variables in the DaemonSet set the Elasticsearch host/port.
 
-## Verify the stack
+### Verify the stack
 
 1. Check the namespace and pods:
 
@@ -95,7 +97,7 @@ kubectl port-forward -n kube-logging svc/kibana 5601:5601
 
 Once Kibana is open, configure an index pattern matching the `fluent-bit` prefix (the ConfigMap uses `Logstash_Prefix fluent-bit`) or check Discover to see incoming logs.
 
-## Generate test logs (optional)
+### Generate test logs (optional)
 
 Deploy a simple test pod that writes to stdout so Fluent Bit will pick it up and ship to Elasticsearch:
 
@@ -121,21 +123,9 @@ kubectl apply -f - <<'EOF'
 EOF
 ```
 
-## Cleanup
+## Monitoring
 
-To remove the whole stack created in this lab:
-
-```shell
-kubectl delete -f lab8/logging/kibana/kibana_service.yml
-kubectl delete -f lab8/logging/kibana/kibana_deployment.yml
-kubectl delete -f lab8/logging/fluent-bit/fluent_daemonset.yml
-kubectl delete -f lab8/logging/fluent-bit/fluent_configMap.yml
-kubectl delete -f lab8/logging/elastic_search/elastic_service.yml
-kubectl delete -f lab8/logging/elastic_search/elastic_statefulset.yml
-kubectl delete -f lab8/logging/logging_namespace.yml
-```
-
-Note that `kubectl delete -f logging_namespace.yml` will fail to remove resources in that namespace until dependent objects are removed; the sequence above deletes workloads first.
+Following ./monitoring/README.md
 
 ## Troubleshooting tips
 
@@ -145,5 +135,5 @@ Note that `kubectl delete -f logging_namespace.yml` will fail to remove resource
 
 ## References / Next steps
 
-- Consider replacing Elasticsearch with a managed backend or using OpenSearch.
-- Add Index lifecycle management and storage sizing guidance for production.
+1. Trần Đức, "Triển khai EFK Stack trên Kubernetes", https://viblo.asia/p/trien-khai-efk-stack-tren-kubernetes-WAyK8AJpZxX
+2. Trịnh Quốc Việt, "Monitoring trên Kubernetes Cluster dùng Prometheus và Grafana", https://viblo.asia/p/k8s-phan-8-monitoring-tren-kubernetes-cluster-dung-prometheus-va-grafana-Qbq5QRkEKD8
